@@ -278,7 +278,7 @@ class ApplyPulidFlux:
             attn_mask = attn_mask.to(device, dtype=dtype)
 
         image = tensor_to_image(image)
-
+        facexlib_model_path = os.path.join(folder_paths.models_dir, "facexlib")
         face_helper = FaceRestoreHelper(
             upscale_factor=1,
             face_size=512,
@@ -286,10 +286,11 @@ class ApplyPulidFlux:
             det_model='retinaface_resnet50',
             save_ext='png',
             device=device,
+            model_rootpath=facexlib_model_path,
         )
 
         face_helper.face_parse = None
-        face_helper.face_parse = init_parsing_model(model_name='bisenet', device=device)
+        face_helper.face_parse = init_parsing_model(model_name='bisenet', device=device, model_rootpath=facexlib_model_path)
 
         bg_label = [0, 16, 18, 7, 8, 9, 14, 15]
         cond = []
