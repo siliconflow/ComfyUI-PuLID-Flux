@@ -224,7 +224,7 @@ class PulidFluxEvaClipLoader:
             model["image_std"] = (eva_transform_std,) * 3
 
         return (model,)
-
+##
 class ApplyPulidFlux:
     @classmethod
     def INPUT_TYPES(s):
