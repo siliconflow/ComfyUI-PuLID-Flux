@@ -72,6 +72,8 @@ def forward_orig(
     y: Tensor,
     guidance: Tensor = None,
     control=None,
+    transformer_options={},
+    attn_mask: Tensor = None,
 ) -> Tensor:
     if img.ndim != 3 or txt.ndim != 3:
         raise ValueError("Input img and txt tensors must have 3 dimensions.")
